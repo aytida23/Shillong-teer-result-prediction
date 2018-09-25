@@ -1,14 +1,8 @@
 """
-<<<<<<< HEAD
 This is the Multiple Linear Regression implementation on the dataset for predicting F/R the result.
 Unfortunately the prediction with backward elimination method is not doing actually what we want.
 Infact the dataset is not suitable for prediction via multiple linear regression model to predict
-better result of S/R with the following independent variables in the dataset. 
-=======
-This is the Multiple Linear Regression implementation on the dataset for predicting F/R i.e the result.
-Unfortunately the prediction with backward elimination method is not upto the mark. Infact the 
-dataset is not suitable for prediction via multiple linear regression model.
->>>>>>> 9da8d51906b359d30008652c43190c8f803d7725
+better result of S/R with the following independent variables in the dataset.
 """
 
 # Multiple Linear Regression
@@ -193,7 +187,6 @@ regressor_opt = LinearRegression()
 regressor_opt.fit(x_opt_train, y_train)
 
 # Predicting the optimal test set results that will have the strong impact on predicting profit
-<<<<<<< HEAD
 y_pred_opt = regressor_opt.predict(x_opt_test)
 
 #visualising the test set with backward elimination method
@@ -203,6 +196,3 @@ plt.title('F/R vs S/R (With Backward Elimination Method)')
 plt.xlabel('F/R')
 plt.ylabel('S/R')
 plt.show()
-=======
-y_pred_opt = regressor_opt.predict(x_opt_test)"""
->>>>>>> 9da8d51906b359d30008652c43190c8f803d7725
