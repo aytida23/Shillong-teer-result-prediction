@@ -1,8 +1,8 @@
 """
 This is the Multiple Linear Regression implementation on the dataset for predicting S/R i.e the 
 result. Unfortunately the prediction with backward elimination method is not doing actually what 
-we want. Infact the dataset is not suitable for prediction via multiple linear regression model to predict
-better result of S/R with the following independent variables in the dataset.
+we want. Infact the dataset is not suitable for prediction via multiple linear regression model to 
+predict better result of S/R with the following independent variables in the dataset.
 """
 
 # Multiple Linear Regression
