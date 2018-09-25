@@ -1,7 +1,7 @@
 """
-This is the Multiple Linear Regression implementation on the dataset for predicting F/R the result.
+This is the Multiple Linear Regression implementation on the dataset for predicting F/R i.e the result.
 Unfortunately the prediction with backward elimination method is not upto the mark. Infact the 
-dataset is 
+dataset is not suitable for prediction via multiple linear regression model.
 """
 
 # Multiple Linear Regression
