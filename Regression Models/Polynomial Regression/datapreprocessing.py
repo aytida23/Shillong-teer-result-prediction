@@ -21,30 +21,30 @@ dataset['MonthOfYear'] = dataset['Date'].dt.month_name()
 dataset['Year'] = dataset['Date'].dt.year
 
 # taking independent variables and dependent variables
-x = dataset.iloc[:, [4,5,6]].values
-y = dataset.iloc[:, [1]].values
+x = dataset.iloc[:, [1,4,5,6]].values
+y = dataset.iloc[:, [2]].values
 
 # Encoding categorical data such as DayOfMonth, MonthOfYear, Year
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 labelencoder_x = LabelEncoder()
-x[:, 0] = labelencoder_x.fit_transform(x[:, 0])
 x[:, 1] = labelencoder_x.fit_transform(x[:, 1])
 x[:, 2] = labelencoder_x.fit_transform(x[:, 2])
+x[:, 3] = labelencoder_x.fit_transform(x[:, 3])
 
 # one hot encoding the DayOfMonth
-onehotencoder = OneHotEncoder(categorical_features = [0])
+onehotencoder = OneHotEncoder(categorical_features = [1])
 x = onehotencoder.fit_transform(x).toarray()
 
 # one hot encoding the MonthOfYear
-onehotencoder = OneHotEncoder(categorical_features = [6])
+onehotencoder = OneHotEncoder(categorical_features = [7])
 x = onehotencoder.fit_transform(x).toarray()
 
 # one hot encoding the Year
-onehotencoder = OneHotEncoder(categorical_features = [18])
+onehotencoder = OneHotEncoder(categorical_features = [19])
 x = onehotencoder.fit_transform(x).toarray()
 
 # Avoiding Dummy Variable Trap
-x = x[:, [1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22]]
+x = x[:, [1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23]]
 
 # Splitting the dataset into training set and test set
 from sklearn.model_selection import train_test_split
