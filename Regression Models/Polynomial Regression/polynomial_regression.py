@@ -49,13 +49,10 @@ x = x[:, [1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23]]
 
 # Splitting the dataset into training set and test set
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 0)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 101)
 
 # Fitting linear regression to the dataset
 from sklearn.linear_model import LinearRegression
-lin_reg = LinearRegression()
-lin_reg.fit(x, y)
-
 # Fitting polynomial regression to the dataset
 from sklearn.preprocessing import PolynomialFeatures
 poly_reg = PolynomialFeatures(degree = 3)
@@ -63,6 +60,24 @@ x_poly = poly_reg.fit_transform(x)
 lin_reg_2 = LinearRegression()
 lin_reg_2.fit(x_poly, y)
 
-y_pred = lin_reg.predict(x_test)
-
+# predicting the test set with polynomial regression model
 y_pred_poly = lin_reg_2.predict(poly_reg.fit_transform(x_test))
+
+# Visualising the Test set results
+plt.figure(figsize = (6,6))
+plt.scatter(x_test[:,[20]], y_test, color='red')
+plt.plot(x_test[:,[20]], y_pred_poly, color='purple')
+plt.title('Prediction of S/R (Test set)')
+plt.xlabel('F/R')
+plt.ylabel('S/R')
+plt.grid()
+plt.show()
+
+#getting r-squared value
+from sklearn import metrics
+print('R-Squared: ', metrics.explained_variance_score(y_test,y_pred_poly))
+
+#printing our errors
+print('MSE:',metrics.mean_squared_error(y_test,y_pred_poly))
+print('MAE:',metrics.mean_absolute_error(y_test,y_pred_poly))
+print('RMSE:',np.sqrt(metrics.mean_squared_error(y_test,y_pred_poly)))
