@@ -71,7 +71,7 @@ plt.show()
 
 # Building the optimal model using Backward Elimination
 import statsmodels.formula.api as sm
-x = np.append(arr = np.ones((1138, 1)).astype(int), values = x, axis = 1)
+x = np.append(arr = np.ones((1143, 1)).astype(int), values = x, axis = 1)
 x_opt = x[:, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]
 regressor_OLS = sm.OLS(endog = y, exog = x_opt).fit()
 regressor_OLS.summary()
@@ -188,6 +188,10 @@ regressor_opt.fit(x_opt_train, y_train)
 
 # Predicting the optimal test set results that will have the strong impact on predicting profit
 y_pred_opt = regressor_opt.predict(x_opt_test)
+
+#getting r-squared value
+from sklearn import metrics
+print('R-Squared: ', metrics.explained_variance_score(y_test,y_pred))
 
 #visualising the test set with backward elimination method
 plt.scatter(x_opt_test[:,[1]], y_test, color='red')
