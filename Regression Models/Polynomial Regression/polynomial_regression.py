@@ -49,13 +49,13 @@ x = x[:, [1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23]]
 
 # Splitting the dataset into training set and test set
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 101)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.1, random_state = 101)
 
 # Fitting linear regression to the dataset
 from sklearn.linear_model import LinearRegression
 # Fitting polynomial regression to the dataset
 from sklearn.preprocessing import PolynomialFeatures
-poly_reg = PolynomialFeatures(degree = 3)
+poly_reg = PolynomialFeatures(degree = 5)
 x_poly = poly_reg.fit_transform(x)
 lin_reg_2 = LinearRegression()
 lin_reg_2.fit(x_poly, y)
